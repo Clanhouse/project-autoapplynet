@@ -14,3 +14,9 @@ export type IStoreAction =
       type: "LOADED";
       data: IJSON[];
     };
+
+export type IStoreDispatchProps = {
+  loadingDispatch?: () => void;
+  loadedDispatch?: (data: IJSON[]) => void;
+  errorDispatch?: () => void;
+};
