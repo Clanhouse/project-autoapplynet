@@ -1,9 +1,11 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import reducer from "./App.reducer";
 import Home from "../Home/Home";
 
-const store = createStore(reducer);
+const store = configureStore({
+  reducer,
+});
 
 function App() {
   return (
