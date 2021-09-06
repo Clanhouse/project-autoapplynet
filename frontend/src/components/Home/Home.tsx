@@ -1,26 +1,12 @@
 import { FunctionComponent } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { IHomeProps } from "./Home.types";
-import { mapDispatchToProps, mapStateToProps } from "../App/App.reducer";
 import { IJSON } from "../App/App.types";
+import { useDispatchProps, useAppSelector } from "../App/App.hooks";
 
-const Home: FunctionComponent<IHomeProps> = ({
-  state,
-  loadingDispatch,
-  loadedDispatch,
-  errorDispatch,
-}) => {
-  if (
-    state === undefined ||
-    loadedDispatch === undefined ||
-    loadingDispatch === undefined ||
-    errorDispatch === undefined
-  ) {
-    throw new Error("State and Dispatches cannot be undefined.");
-  }
-
-  const { data, isLoading, error } = state;
+const Home: FunctionComponent = () => {
+  const { data, isLoading, error } = useAppSelector((state) => state);
+  const { loadingDispatch, loadedDispatch, errorDispatch } = useDispatchProps();
 
   const fetchData = async () => {
     loadingDispatch();
@@ -44,4 +30,4 @@ const Home: FunctionComponent<IHomeProps> = ({
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect()(Home);
