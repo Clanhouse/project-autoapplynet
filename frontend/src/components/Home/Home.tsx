@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import { connect } from "react-redux";
 import { useGetDataMutation } from "../App/App.hooks";
 
 const Home: FunctionComponent = () => {
@@ -16,4 +15,4 @@ const Home: FunctionComponent = () => {
   );
 };
 
-export default connect()(Home);
+export default Home;
