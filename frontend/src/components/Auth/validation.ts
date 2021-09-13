@@ -13,6 +13,8 @@ export type Errors = {
 export const validate = (values: Values) => {
   const errors: Errors = {};
 
+  const isSignUp = true;
+
   if (!values.email) {
     errors.email = "Required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -25,9 +27,9 @@ export const validate = (values: Values) => {
     errors.password = "Must be 6 characters long";
   }
 
-  if (!values.confirmPassword) {
+  if (!values.confirmPassword && isSignUp) {
     errors.confirmPassword = "Required";
-  } else if (values.confirmPassword !== values.password) {
+  } else if (values.confirmPassword !== values.password && isSignUp) {
     errors.confirmPassword = "Password must by equal";
   }
 
