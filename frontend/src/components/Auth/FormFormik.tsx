@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 
+import { Link } from "react-router-dom";
+
 type FormProps = {
   isSignUp: boolean;
 };
@@ -36,7 +38,7 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
             <Field
               name="email"
               type="email"
-              class="input_form"
+              className="input_form"
               placeholder="Enter your email"
             />
           </Search>
@@ -49,13 +51,19 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
             <Field
               name="password"
               type="password"
-              class="input_form"
+              className="input_form"
               placeholder="Enter your password"
             />
           </Search>
           <p className="error_message">
             <ErrorMessage name="password" />
           </p>
+
+          {isSignUp ? null : (
+            <Link to="#" className="fortgottenPassword">
+              Forgotten password?
+            </Link>
+          )}
 
           <button type="submit" className="btn btn-form">
             {isSignUp ? "Join now!" : "Log in!"}
@@ -136,11 +144,17 @@ const Wrapper = styled.div`
     position: absolute;
     margin-left: 1rem;
   }
+
+  .fortgottenPassword {
+    text-align: center;
+    text-decoration: none;
+    color: grey;
+  }
 `;
 
 const Search = styled.div`
   padding: 0.5rem;
-  margin: 0.5rem;
+  margin: 0.2rem;
   position: relative;
   display: flex;
   align-items: center;

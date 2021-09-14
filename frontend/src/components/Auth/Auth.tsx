@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 //STYLES
 import styled from "styled-components";
@@ -16,7 +17,11 @@ const Auth: React.FC = () => {
   return (
     <Wrapper>
       <div className="main">
-        <h1>autoApply</h1>
+        <h1>
+          <Link to="/" className="title">
+            autoApply
+          </Link>
+        </h1>
         <h2>{isSignUp ? "Create your account" : "Login into your account"}</h2>
 
         <FormFormik isSignUp={isSignUp} />
@@ -75,8 +80,12 @@ const Wrapper = styled.div`
     border-radius: 10px;
     box-shadow: 0rem 1.3rem 1rem rgba(0, 0, 0, 0.7);
 
-    h1 {
+    .title {
+      text-decoration: none;
       color: #f2f4f3;
+    }
+
+    h1 {
       text-align: center;
       font-size: 4rem;
       background: transparent;
