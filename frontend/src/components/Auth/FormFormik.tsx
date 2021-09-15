@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
 
 import { MdEmail } from "react-icons/md";
-import { RiLockPasswordFill } from "react-icons/ri";
+import { AiFillLock, AiFillUnlock } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
 
@@ -13,6 +13,8 @@ type FormProps = {
 };
 
 const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <Wrapper>
       <Formik
@@ -47,10 +49,21 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
           </p>
 
           <Search>
-            <RiLockPasswordFill className="input_icon" />
+            {showPassword ? (
+              <AiFillUnlock
+                className="input_icon input_lock"
+                onClick={() => setShowPassword((prev) => !prev)}
+              />
+            ) : (
+              <AiFillLock
+                className="input_icon input_lock"
+                onClick={() => setShowPassword((prev) => !prev)}
+              />
+            )}
+
             <Field
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               className="input_form"
               placeholder="Enter your password"
             />
@@ -85,8 +98,8 @@ const Wrapper = styled.div`
     padding: 0.9rem 4rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    background: #1b998b;
-    color: #f2f4f3;
+    background: var(--color-primary);
+    color: var(--text-color-primary);
     border-radius: 10px;
     font-size: 1rem;
     font-family: "Saira", sans-serif;
@@ -108,29 +121,29 @@ const Wrapper = styled.div`
     border-radius: 10px;
     border: none;
     background: #171412;
-    color: grey;
+    color: var(--color-grey);
     border: 1px solid grey;
     transition: all 0.2s;
     font-family: "Saira", sans-serif;
     transition: all 0.2s ease-in-out;
 
     &::placeholder {
-      color: #f2f4f3;
+      color: var(--text-color-primary);
     }
 
     &:focus {
       outline: none;
-      border-bottom: 3px solid #1b998b;
-      border-left: 3px solid #1b998b;
+      border-bottom: 3px solid var(--color-primary);
+      border-left: 3px solid var(--color-primary);
     }
 
     &:focus::placeholder {
-      color: #f2f4f3;
+      color: var(--text-color-primary);
     }
   }
 
   .error_message {
-    color: white;
+    color: var(--text-color-primary);
     font-size: 1rem;
     padding: 0rem 1rem;
     display: inline;
@@ -138,17 +151,21 @@ const Wrapper = styled.div`
   }
 
   .input_icon {
-    color: #f2f4f3;
+    color: var(--text-color-primary);
     height: 1.4rem;
     width: 1.4rem;
     position: absolute;
     margin-left: 1rem;
   }
 
+  .input_lock {
+    cursor: pointer;
+  }
+
   .fortgottenPassword {
     text-align: center;
     text-decoration: none;
-    color: grey;
+    color: var(--color-grey);
   }
 `;
 

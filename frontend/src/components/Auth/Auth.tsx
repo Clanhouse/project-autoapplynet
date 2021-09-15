@@ -54,7 +54,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: var(--gradient-primary);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 
@@ -82,7 +82,7 @@ const Wrapper = styled.div`
 
     .title {
       text-decoration: none;
-      color: #f2f4f3;
+      color: var(--text-color-primary);
     }
 
     h1 {
@@ -92,7 +92,7 @@ const Wrapper = styled.div`
       transition: all 0.2s;
 
       &:hover {
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background: var(--gradient-primary);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -101,12 +101,12 @@ const Wrapper = styled.div`
 
     h2 {
       text-align: center;
-      color: #e9f6f0;
+      color: var(--text-color-primary);
     }
 
     .paragraph {
       margin-top: 2rem;
-      color: #f2f4f3;
+      color: var(--text-color-primary);
       text-align: center;
     }
 
@@ -114,7 +114,7 @@ const Wrapper = styled.div`
       border: none;
       background: transparent;
       font-family: "Saira", sans-serif;
-      color: #1b998b;
+      color: var(--color-primary);
       font-size: 1rem;
       cursor: pointer;
       padding-left: 0.3rem;
