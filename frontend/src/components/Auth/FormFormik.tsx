@@ -34,7 +34,7 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
           }, 400);
         }}
       >
-        <Form className="form">
+        <Form className="form" autoComplete="off">
           <Search>
             <MdEmail className="input_icon" />
             <Field
@@ -42,6 +42,7 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
               type="email"
               className="input_form"
               placeholder="Enter your email"
+              autoComplete="new-password"
             />
           </Search>
           <p className="error_message">
@@ -74,7 +75,7 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
 
           {isSignUp ? null : (
             <Link to="#" className="fortgottenPassword">
-              Forgotten password?
+              Forgot password?
             </Link>
           )}
 

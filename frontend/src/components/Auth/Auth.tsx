@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //ICONS
-
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook2 } from "react-icons/im";
 
