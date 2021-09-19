@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //ICONS
-import { FcGoogle } from "react-icons/fc";
-import { ImFacebook2 } from "react-icons/im";
+import { FcGoogle as GoogleIcon} from "react-icons/fc";
+import { ImFacebook2 as FacebookIcon} from "react-icons/im";
 
 import FormFormik from "./FormFormik";
 
@@ -31,8 +31,8 @@ const Auth: React.FC = () => {
             : "Or login with these social profile"}
         </p>
         <Socials>
-          <FcGoogle className="social-icon" />
-          <ImFacebook2 className="social-icon" style={{ fill: "#3b5998" }} />
+          <GoogleIcon className="social-icon" />
+          <FacebookIcon className="social-icon" style={{ fill: "#3b5998" }} />
         </Socials>
         <p className="paragraph">
           {isSignUp ? "Already a member?" : "Don't have an account?"}

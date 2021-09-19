@@ -1,32 +1,31 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import styled from "styled-components";
-
-import { MdEmail } from "react-icons/md";
-import { AiFillLock, AiFillUnlock } from "react-icons/ai";
-
 import { Link } from "react-router-dom";
 
-type FormProps = {
-  isSignUp: boolean;
-};
+import { MdEmail as EmailIcon } from "react-icons/md";
+import {
+  AiFillLock as LockIcon,
+  AiFillUnlock as UnLockIcon,
+} from "react-icons/ai";
+
+//TYPES
+import {
+  FormikValidation,
+  FormProps,
+  InitialFormValue,
+} from "./FormFormik.types";
 
 const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const initialValues: InitialFormValue = { email: "", password: "" };
 
   return (
     <Wrapper>
       <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={Yup.object({
-          email: Yup.string()
-            .email("Invalid email address.")
-            .required("Email is required"),
-          password: Yup.string()
-            .min(6, "Must be 6 characters or more")
-            .required("Password is required."),
-        })}
+        initialValues={initialValues}
+        validationSchema={FormikValidation}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -36,7 +35,7 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
       >
         <Form className="form" autoComplete="off">
           <Search>
-            <MdEmail className="input_icon" />
+            <EmailIcon className="input_icon" />
             <Field
               name="email"
               type="email"
@@ -50,21 +49,21 @@ const FormFormik: React.FC<FormProps> = ({ isSignUp }) => {
           </p>
 
           <Search>
-            {showPassword ? (
-              <AiFillUnlock
+            {isPasswordVisible ? (
+              <UnLockIcon
                 className="input_icon input_lock"
-                onClick={() => setShowPassword((prev) => !prev)}
+                onClick={() => setIsPasswordVisible((prev) => !prev)}
               />
             ) : (
-              <AiFillLock
+              <LockIcon
                 className="input_icon input_lock"
-                onClick={() => setShowPassword((prev) => !prev)}
+                onClick={() => setIsPasswordVisible((prev) => !prev)}
               />
             )}
 
             <Field
               name="password"
-              type={showPassword ? "text" : "password"}
+              type={isPasswordVisible ? "text" : "password"}
               className="input_form"
               placeholder="Enter your password"
             />
