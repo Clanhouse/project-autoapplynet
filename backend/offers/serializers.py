@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Offer
+from .models import Offer, Profile
 
 
 class OfferSerializer(serializers.ModelSerializer):
@@ -16,4 +16,17 @@ class OfferSerializer(serializers.ModelSerializer):
             'salary_max',
             'remote',
             'active'
+        )
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='user.username')
+    class Meta:
+        model = Profile
+        fields = (
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'resume',
         )

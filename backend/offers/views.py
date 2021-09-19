@@ -1,8 +1,8 @@
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Offer
-from .serializers import OfferSerializer
+from .models import Offer, Profile
+from .serializers import OfferSerializer, ProfileSerializer
 
 
 class OfferList(APIView):
@@ -30,3 +30,12 @@ class OfferList(APIView):
             return Response({"response": "Offer already exists."}, status=status.HTTP_409_CONFLICT)
             
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileDetail(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        profile = request.user.profile
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
