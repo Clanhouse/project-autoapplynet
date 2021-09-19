@@ -3,9 +3,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Offer, Profile, Application
 from .serializers import OfferSerializer, ProfileSerializer, ApplicationSerializer
+from .permissions import IsStaffOrReadOnly
 
 
 class OfferList(APIView):
+    permission_classes = [IsStaffOrReadOnly]
 
     def get(self, request):
         offers = Offer.objects.all()
@@ -47,7 +49,10 @@ class OfferApply(APIView):
     def post(self, request):
         user = request.user.profile
         offer_id = request.data['offer_id']
-        offer = Offer.objects.get(pk=offer_id)
+        try:
+            offer = Offer.objects.get(pk=offer_id)
+        except Offer.DoesNotExist:
+            return Response({"reponse": "No such offer."}, status=status.HTTP_404_NOT_FOUND)
         if not offer.active:
             return Response({"response": "Offer is innactive."}, status=status.HTTP_400_BAD_REQUEST)
         application = Application.objects.create(user=user, offer=offer)
