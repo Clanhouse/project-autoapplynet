@@ -58,3 +58,21 @@ class OfferApply(APIView):
         application = Application.objects.create(user=user, offer=offer)
         serializer = ApplicationSerializer(application)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class ApplicationHistory(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        profile = request.user.profile
+        applications = Application.objects.filter(user=profile.pk)
+        response = []
+        for application in applications:
+            offer = application.offer
+            date = application.date
+            offer_serializer = OfferSerializer(offer)
+            application_full_entry = {}
+            application_full_entry['offer'] = offer_serializer.data
+            application_full_entry['date'] = date
+            response.append(application_full_entry)
+        return Response(response)
