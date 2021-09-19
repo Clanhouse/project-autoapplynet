@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Offer, Profile
+from .models import Offer, Profile, Application
 
 
 class OfferSerializer(serializers.ModelSerializer):
@@ -29,4 +29,15 @@ class ProfileSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'resume',
+        )
+
+
+class ApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = (
+            'id',
+            'user',
+            'offer',
+            'date'
         )

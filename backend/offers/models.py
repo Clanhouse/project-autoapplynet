@@ -39,3 +39,9 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
+
+class Application(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    offer = models.ForeignKey(Offer, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)

@@ -1,8 +1,8 @@
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Offer, Profile
-from .serializers import OfferSerializer, ProfileSerializer
+from .models import Offer, Profile, Application
+from .serializers import OfferSerializer, ProfileSerializer, ApplicationSerializer
 
 
 class OfferList(APIView):
@@ -39,3 +39,17 @@ class ProfileDetail(APIView):
         profile = request.user.profile
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
+
+
+class OfferApply(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        user = request.user.profile
+        offer_id = request.data['offer_id']
+        offer = Offer.objects.get(pk=offer_id)
+        if not offer.active:
+            return Response({"response": "Offer is innactive."}, status=status.HTTP_400_BAD_REQUEST)
+        application = Application.objects.create(user=user, offer=offer)
+        serializer = ApplicationSerializer(application)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
