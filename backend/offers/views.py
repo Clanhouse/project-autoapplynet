@@ -10,7 +10,30 @@ class OfferList(APIView):
     permission_classes = [IsStaffOrReadOnly]
 
     def get(self, request):
-        offers = Offer.objects.all()
+
+        title = request.GET.get("title", "")
+        city = request.GET.get("city", "")
+        experience_levels = request.GET.get("exp", "")
+        salary_min = int(request.GET.get("smin", -1))
+        salary_max = int(request.GET.get("smax", -1))
+        remote = request.GET.get("remote", "")
+
+        offers = Offer.objects.filter(active=True)
+        if title:
+            offers = offers.filter(title__icontains=title)
+        if city:
+            offers = offers.filter(city__iexact=city)
+        if experience_levels:
+            offers = offers.filter(experience_level__in=experience_levels)
+        if salary_min != -1:
+            offers = offers.filter(salary_min__gte=salary_min)
+        if salary_max != -1:
+            offers = offers.filter(salary_max__lte=salary_max)
+        if remote == "true":
+            offers = offers.filter(remote=True)
+        elif remote == "false":
+            offers = offers.filter(remote=False)
+
         serializer = OfferSerializer(offers, many=True)
         return Response(serializer.data)
     
@@ -19,7 +42,7 @@ class OfferList(APIView):
         if serializer.is_valid():
             sd = serializer.validated_data
             print(sd)
-            try: 
+            try:
                 Offer.objects.get(
                     title=sd["title"],
                     company_name=sd["company_name"],
