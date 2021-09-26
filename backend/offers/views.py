@@ -1,8 +1,8 @@
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Offer, Profile, Application
-from .serializers import OfferSerializer, ProfileSerializer, ApplicationSerializer
+from .models import Offer, Application
+from .serializers import OfferSerializer, ApplicationSerializer
 from .permissions import IsStaffOrReadOnly
 
 
@@ -57,20 +57,11 @@ class OfferList(APIView):
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
-class ProfileDetail(APIView):
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get(self, request):
-        profile = request.user.profile
-        serializer = ProfileSerializer(profile)
-        return Response(serializer.data)
-
-
 class OfferApply(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        user = request.user.profile
+        user = request.user
         offer_id = request.data['offer_id']
         try:
             offer = Offer.objects.get(pk=offer_id)
@@ -87,7 +78,7 @@ class ApplicationHistory(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        profile = request.user.profile
+        profile = request.user
         applications = Application.objects.filter(user=profile.pk)
         response = []
         for application in applications:
