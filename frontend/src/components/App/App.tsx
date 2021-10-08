@@ -1,7 +1,7 @@
 import Home from "../Home/Home";
 import Auth from "../Auth/Auth";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import GlobalStyle from "../../globalStyles"
+import GlobalStyle from "../../assets/styles/globalStyles"
 
 function App() {
   return (

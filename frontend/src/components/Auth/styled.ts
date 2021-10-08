@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../assets/styles/device";
 
 export const AuthWrapper = styled.div`
   height: 100vh;
@@ -31,6 +32,14 @@ export const AuthWrapper = styled.div`
     border-radius: 10px;
     box-shadow: 0rem 1.3rem 1rem rgba(0, 0, 0, 0.7);
 
+    @media ${device.tablet} {
+      min-height: 100vh;
+      min-width: 100vw;
+      /* justify-content: space-evenly; */
+      border-radius: 0px;
+      padding: 4rem 4rem;
+    }
+
     .title {
       text-decoration: none;
       color: var(--text-color-primary);
@@ -41,6 +50,10 @@ export const AuthWrapper = styled.div`
       font-size: 4rem;
       background: transparent;
       transition: all 0.2s;
+
+      @media ${device.tablet} {
+        font-size: 6rem;
+      }
 
       &:hover {
         background: var(--gradient-primary);
@@ -53,6 +66,10 @@ export const AuthWrapper = styled.div`
     h2 {
       text-align: center;
       color: var(--text-color-primary);
+
+      @media ${device.tablet} {
+        font-size: 2.5rem;
+      }
     }
 
     .paragraph {
@@ -97,6 +114,10 @@ export const Socials = styled.div`
 `;
 
 export const FormWrapper = styled.div`
+  @media ${device.tablet} {
+    margin: 3rem 0rem;
+  }
+
   .form {
     display: flex;
     flex-direction: column;
@@ -114,6 +135,10 @@ export const FormWrapper = styled.div`
     font-family: "Saira", sans-serif;
     cursor: pointer;
     transition: all 0.2s;
+
+    @media ${device.tablet} {
+      margin: 1rem 0rem;
+    }
 
     &:hover {
       transform: translateY(-3px);
@@ -135,6 +160,8 @@ export const FormWrapper = styled.div`
     transition: all 0.2s;
     font-family: "Saira", sans-serif;
     transition: all 0.2s ease-in-out;
+
+    
 
     &::placeholder {
       color: var(--text-color-primary);
@@ -186,4 +213,8 @@ export const Search = styled.div`
   align-items: center;
   width: 100%;
   align-self: center;
+
+  @media ${device.tablet} {
+    margin: 1.5rem 0rem;
+  }
 `;
