@@ -150,7 +150,7 @@ export const FormWrapper = styled.div`
   }
 
   .input_form {
-    padding: 1rem 1rem 1rem 3.5rem;
+    padding: 1rem 1rem 1rem 4rem;
     width: 100%;
     border-radius: 10px;
     border: none;
@@ -160,11 +160,21 @@ export const FormWrapper = styled.div`
     transition: all 0.2s;
     font-family: "Saira", sans-serif;
     transition: all 0.2s ease-in-out;
+    justify-content: center;
 
-    
+    @media ${device.tablet} {
+      height: 5.5rem;
+      position: relative;
+      font-size: 2rem;
+    }
 
     &::placeholder {
       color: var(--text-color-primary);
+
+      @media ${device.tablet} {
+        font-size: 2rem;
+        position: absolute;
+      }
     }
 
     &:focus {
@@ -184,6 +194,10 @@ export const FormWrapper = styled.div`
     padding: 0rem 1rem;
     display: inline;
     transition: all 0.5s;
+
+    @media ${device.tablet} {
+      font-size: 1.5rem;
+    }
   }
 
   .input_icon {
@@ -192,6 +206,13 @@ export const FormWrapper = styled.div`
     width: 1.4rem;
     position: absolute;
     margin-left: 1rem;
+
+    @media ${device.tablet} {
+      height: 1.7rem;
+      width: 1.7rem;
+      position: absolute;
+      z-index: 100;
+    }
   }
 
   .input_lock {
