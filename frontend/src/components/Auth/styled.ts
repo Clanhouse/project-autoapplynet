@@ -54,7 +54,11 @@ export const AuthWrapper = styled.div`
       transition: all 0.2s;
 
       @media ${device.tablet} {
-        font-size: 6rem;
+        font-size: 5rem;
+      }
+
+      @media ${device.mobileL} {
+        font-size: 4rem;
       }
 
       &:hover {
@@ -70,7 +74,11 @@ export const AuthWrapper = styled.div`
       color: var(--text-color-primary);
 
       @media ${device.tablet} {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+      }
+
+      @media ${device.mobileL} {
+        font-size: 1.8rem;
       }
     }
 
@@ -195,6 +203,10 @@ export const FormWrapper = styled.div`
       @media ${device.tablet} {
         font-size: 2rem;
       }
+
+      @media ${device.mobileL} {
+        font-size: 1.3rem;
+      }
     }
 
     &:focus {
@@ -217,6 +229,10 @@ export const FormWrapper = styled.div`
 
     @media ${device.tablet} {
       font-size: 1.5rem;
+    }
+
+    @media ${device.mobileL} {
+      font-size: 1.2rem;
     }
   }
 
