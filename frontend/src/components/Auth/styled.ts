@@ -9,6 +9,7 @@ export const AuthWrapper = styled.div`
   background: var(--gradient-primary);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  overflow-x: hidden;
 
   @keyframes gradient {
     0% {
@@ -35,9 +36,10 @@ export const AuthWrapper = styled.div`
     @media ${device.tablet} {
       min-height: 100vh;
       min-width: 100vw;
-      /* justify-content: space-evenly; */
       border-radius: 0px;
       padding: 4rem 4rem;
+
+      padding: 1rem 2rem;
     }
 
     .title {
@@ -73,7 +75,7 @@ export const AuthWrapper = styled.div`
     }
 
     .paragraph {
-      margin-top: 2rem;
+      margin-top: 1.8rem;
       color: var(--text-color-primary);
       text-align: center;
 
@@ -132,7 +134,7 @@ export const Socials = styled.div`
 
 export const FormWrapper = styled.div`
   @media ${device.tablet} {
-    margin: 3rem 0rem;
+    margin: 1.4rem 0rem;
   }
 
   .form {
@@ -155,7 +157,7 @@ export const FormWrapper = styled.div`
 
     @media ${device.tablet} {
       margin: 1rem 0rem;
-      padding: 1.25rem 4rem;
+      padding: 1.1rem 4rem;
       font-size: 1.5rem;
     }
 
@@ -182,9 +184,9 @@ export const FormWrapper = styled.div`
     justify-content: center;
 
     @media ${device.tablet} {
-      height: 5.5rem;
+      height: 4.2rem;
       position: relative;
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     &::placeholder {
@@ -192,7 +194,6 @@ export const FormWrapper = styled.div`
 
       @media ${device.tablet} {
         font-size: 2rem;
-        position: absolute;
       }
     }
 
@@ -255,6 +256,6 @@ export const Search = styled.div`
   align-self: center;
 
   @media ${device.tablet} {
-    margin: 1.5rem 0rem;
+    margin: 1rem 0rem;
   }
 `;
