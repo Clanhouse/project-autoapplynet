@@ -76,6 +76,14 @@ export const AuthWrapper = styled.div`
       margin-top: 2rem;
       color: var(--text-color-primary);
       text-align: center;
+
+      @media ${device.tablet} {
+        font-size: 1.6rem;
+      }
+    }
+
+    .paragraph:last-child {
+      margin-top: 0rem;
     }
 
     .btn-switch {
@@ -85,7 +93,11 @@ export const AuthWrapper = styled.div`
       color: var(--color-primary);
       font-size: 1rem;
       cursor: pointer;
-      padding-left: 0.3rem;
+      padding-left: 0.4rem;
+
+      @media ${device.tablet} {
+        font-size: 1.6rem;
+      }
     }
   }
 `;
@@ -94,7 +106,7 @@ export const Socials = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0rem;
+  margin: 1rem 0rem;
 
   .social-icon {
     height: 2.5rem;
@@ -102,6 +114,11 @@ export const Socials = styled.div`
     margin: 0 0.5rem;
     cursor: pointer;
     transition: all 0.2s;
+
+    @media ${device.tablet} {
+      height: 4rem;
+      width: 4rem;
+    }
 
     &:hover {
       transform: translateY(-3px);
@@ -138,6 +155,8 @@ export const FormWrapper = styled.div`
 
     @media ${device.tablet} {
       margin: 1rem 0rem;
+      padding: 1.25rem 4rem;
+      font-size: 1.5rem;
     }
 
     &:hover {
