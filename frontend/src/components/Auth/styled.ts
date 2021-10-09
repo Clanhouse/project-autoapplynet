@@ -37,9 +37,12 @@ export const AuthWrapper = styled.div`
       min-height: 100vh;
       min-width: 100vw;
       border-radius: 0px;
-      padding: 4rem 4rem;
 
       padding: 1rem 2rem;
+    }
+
+    @media ${device.mobileL} {
+      padding: 1rem 0.6rem;
     }
 
     .title {
@@ -58,7 +61,7 @@ export const AuthWrapper = styled.div`
       }
 
       @media ${device.mobileL} {
-        font-size: 4rem;
+        font-size: 2.8rem;
       }
 
       &:hover {
@@ -78,7 +81,7 @@ export const AuthWrapper = styled.div`
       }
 
       @media ${device.mobileL} {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
     }
 
@@ -169,6 +172,10 @@ export const FormWrapper = styled.div`
       font-size: 1.5rem;
     }
 
+    @media ${device.mobileL} {
+      padding: 0.7rem 3.5rem;
+    }
+
     &:hover {
       transform: translateY(-3px);
     }
@@ -179,7 +186,7 @@ export const FormWrapper = styled.div`
   }
 
   .input_form {
-    padding: 1rem 1rem 1rem 4rem;
+    padding: 1rem 1rem 1rem 3.5rem;
     width: 100%;
     border-radius: 10px;
     border: none;
@@ -197,15 +204,21 @@ export const FormWrapper = styled.div`
       font-size: 1.8rem;
     }
 
+    @media ${device.mobileL} {
+      height: 3.5rem;
+      font-size: 0.8rem;
+      padding: 1rem 1rem 1rem 2.5rem;
+    }
+
     &::placeholder {
       color: var(--text-color-primary);
 
       @media ${device.tablet} {
-        font-size: 2rem;
+        font-size: 1.7rem;
       }
 
       @media ${device.mobileL} {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
     }
 
@@ -248,6 +261,11 @@ export const FormWrapper = styled.div`
       width: 1.7rem;
       position: absolute;
       z-index: 100;
+    }
+
+    @media ${device.mobileL} {
+      height: 1.3rem;
+      width: 1.3rem;
     }
   }
 
