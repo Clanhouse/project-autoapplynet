@@ -211,7 +211,7 @@ export const FormWrapper = styled.div`
     @media ${devices.mobileL} {
       height: 3.5rem;
       font-size: 0.8rem;
-      padding: 1rem 1rem 1rem 2.5rem;
+      padding: 0rem 0rem 0rem 2.5rem;
     }
 
     &::placeholder {
@@ -222,7 +222,7 @@ export const FormWrapper = styled.div`
       }
 
       @media ${devices.mobileL} {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
 
@@ -268,8 +268,8 @@ export const FormWrapper = styled.div`
     }
 
     @media ${devices.mobileL} {
-      height: 1.3rem;
-      width: 1.3rem;
+      height: 1rem;
+      width: 1rem;
     }
   }
 
