@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../assets/styles/device";
+import { devices } from "../../assets/styles/devices";
 
 export const AuthWrapper = styled.div`
   height: 100vh;
@@ -33,7 +33,7 @@ export const AuthWrapper = styled.div`
     border-radius: 10px;
     box-shadow: 0rem 1.3rem 1rem rgba(0, 0, 0, 0.7);
 
-    @media ${device.tablet} {
+    @media ${devices.tablet} {
       min-height: 100vh;
       min-width: 100vw;
       border-radius: 0px;
@@ -41,7 +41,7 @@ export const AuthWrapper = styled.div`
       padding: 1rem 2rem;
     }
 
-    @media ${device.mobileL} {
+    @media ${devices.mobileL} {
       padding: 1rem 0.6rem;
     }
 
@@ -56,11 +56,11 @@ export const AuthWrapper = styled.div`
       background: transparent;
       transition: all 0.2s;
 
-      @media ${device.tablet} {
+      @media ${devices.tablet} {
         font-size: 5rem;
       }
 
-      @media ${device.mobileL} {
+      @media ${devices.mobileL} {
         font-size: 2.8rem;
       }
 
@@ -76,11 +76,11 @@ export const AuthWrapper = styled.div`
       text-align: center;
       color: var(--text-color-primary);
 
-      @media ${device.tablet} {
+      @media ${devices.tablet} {
         font-size: 2.3rem;
       }
 
-      @media ${device.mobileL} {
+      @media ${devices.mobileL} {
         font-size: 1.6rem;
       }
     }
@@ -90,7 +90,7 @@ export const AuthWrapper = styled.div`
       color: var(--text-color-primary);
       text-align: center;
 
-      @media ${device.tablet} {
+      @media ${devices.tablet} {
         font-size: 1.6rem;
       }
     }
@@ -108,7 +108,7 @@ export const AuthWrapper = styled.div`
       cursor: pointer;
       padding-left: 0.4rem;
 
-      @media ${device.tablet} {
+      @media ${devices.tablet} {
         font-size: 1.6rem;
       }
     }
@@ -128,7 +128,7 @@ export const Socials = styled.div`
     cursor: pointer;
     transition: all 0.2s;
 
-    @media ${device.tablet} {
+    @media ${devices.tablet} {
       height: 4rem;
       width: 4rem;
     }
@@ -144,7 +144,7 @@ export const Socials = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-  @media ${device.tablet} {
+  @media ${devices.tablet} {
     margin: 1.4rem 0rem;
   }
 
@@ -166,13 +166,13 @@ export const FormWrapper = styled.div`
     cursor: pointer;
     transition: all 0.2s;
 
-    @media ${device.tablet} {
+    @media ${devices.tablet} {
       margin: 1rem 0rem;
       padding: 1.1rem 4rem;
       font-size: 1.5rem;
     }
 
-    @media ${device.mobileL} {
+    @media ${devices.mobileL} {
       padding: 0.7rem 3.5rem;
     }
 
@@ -198,13 +198,13 @@ export const FormWrapper = styled.div`
     transition: all 0.2s ease-in-out;
     justify-content: center;
 
-    @media ${device.tablet} {
+    @media ${devices.tablet} {
       height: 4.2rem;
       position: relative;
       font-size: 1.8rem;
     }
 
-    @media ${device.mobileL} {
+    @media ${devices.mobileL} {
       height: 3.5rem;
       font-size: 0.8rem;
       padding: 1rem 1rem 1rem 2.5rem;
@@ -213,11 +213,11 @@ export const FormWrapper = styled.div`
     &::placeholder {
       color: var(--text-color-primary);
 
-      @media ${device.tablet} {
+      @media ${devices.tablet} {
         font-size: 1.7rem;
       }
 
-      @media ${device.mobileL} {
+      @media ${devices.mobileL} {
         font-size: 1.1rem;
       }
     }
@@ -240,11 +240,11 @@ export const FormWrapper = styled.div`
     display: inline;
     transition: all 0.5s;
 
-    @media ${device.tablet} {
+    @media ${devices.tablet} {
       font-size: 1.5rem;
     }
 
-    @media ${device.mobileL} {
+    @media ${devices.mobileL} {
       font-size: 1.2rem;
     }
   }
@@ -256,14 +256,14 @@ export const FormWrapper = styled.div`
     position: absolute;
     margin-left: 1rem;
 
-    @media ${device.tablet} {
+    @media ${devices.tablet} {
       height: 1.7rem;
       width: 1.7rem;
       position: absolute;
       z-index: 100;
     }
 
-    @media ${device.mobileL} {
+    @media ${devices.mobileL} {
       height: 1.3rem;
       width: 1.3rem;
     }
@@ -289,7 +289,7 @@ export const Search = styled.div`
   width: 100%;
   align-self: center;
 
-  @media ${device.tablet} {
+  @media ${devices.tablet} {
     margin: 1rem 0rem;
   }
 `;
