@@ -11,6 +11,10 @@ export const AuthWrapper = styled.div`
   animation: gradient 15s ease infinite;
   overflow-x: hidden;
 
+  @media ${devices.mobileL} {
+    height: initial;
+  }
+
   @keyframes gradient {
     0% {
       background-position: 0% 50%;
@@ -37,11 +41,11 @@ export const AuthWrapper = styled.div`
       min-height: 100vh;
       min-width: 100vw;
       border-radius: 0px;
-
       padding: 1rem 2rem;
     }
 
     @media ${devices.mobileL} {
+      min-height: 100vh;
       padding: 1rem 0.6rem;
     }
 
