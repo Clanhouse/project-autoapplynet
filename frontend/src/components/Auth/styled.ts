@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../assets/styles/devices";
 
 export const AuthWrapper = styled.div`
   height: 100vh;
@@ -8,6 +9,11 @@ export const AuthWrapper = styled.div`
   background: var(--gradient-primary);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  overflow-x: hidden;
+
+  @media ${devices.mobileL} {
+    height: initial;
+  }
 
   @keyframes gradient {
     0% {
@@ -31,6 +37,18 @@ export const AuthWrapper = styled.div`
     border-radius: 10px;
     box-shadow: 0rem 1.3rem 1rem rgba(0, 0, 0, 0.7);
 
+    @media ${devices.tablet} {
+      min-height: 100vh;
+      min-width: 100vw;
+      border-radius: 0px;
+      padding: 1rem 2rem;
+    }
+
+    @media ${devices.mobileL} {
+      min-height: 100vh;
+      padding: 1rem 0.6rem;
+    }
+
     .title {
       text-decoration: none;
       color: var(--text-color-primary);
@@ -41,6 +59,14 @@ export const AuthWrapper = styled.div`
       font-size: 4rem;
       background: transparent;
       transition: all 0.2s;
+
+      @media ${devices.tablet} {
+        font-size: 5rem;
+      }
+
+      @media ${devices.mobileL} {
+        font-size: 2.8rem;
+      }
 
       &:hover {
         background: var(--gradient-primary);
@@ -53,12 +79,28 @@ export const AuthWrapper = styled.div`
     h2 {
       text-align: center;
       color: var(--text-color-primary);
+
+      @media ${devices.tablet} {
+        font-size: 2.3rem;
+      }
+
+      @media ${devices.mobileL} {
+        font-size: 1.6rem;
+      }
     }
 
     .paragraph {
-      margin-top: 2rem;
+      margin-top: 1.8rem;
       color: var(--text-color-primary);
       text-align: center;
+
+      @media ${devices.tablet} {
+        font-size: 1.6rem;
+      }
+    }
+
+    .paragraph:last-child {
+      margin-top: 0rem;
     }
 
     .btn-switch {
@@ -68,7 +110,11 @@ export const AuthWrapper = styled.div`
       color: var(--color-primary);
       font-size: 1rem;
       cursor: pointer;
-      padding-left: 0.3rem;
+      padding-left: 0.4rem;
+
+      @media ${devices.tablet} {
+        font-size: 1.6rem;
+      }
     }
   }
 `;
@@ -77,7 +123,7 @@ export const Socials = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0rem;
+  margin: 1rem 0rem;
 
   .social-icon {
     height: 2.5rem;
@@ -85,6 +131,11 @@ export const Socials = styled.div`
     margin: 0 0.5rem;
     cursor: pointer;
     transition: all 0.2s;
+
+    @media ${devices.tablet} {
+      height: 4rem;
+      width: 4rem;
+    }
 
     &:hover {
       transform: translateY(-3px);
@@ -97,6 +148,10 @@ export const Socials = styled.div`
 `;
 
 export const FormWrapper = styled.div`
+  @media ${devices.tablet} {
+    margin: 1.4rem 0rem;
+  }
+
   .form {
     display: flex;
     flex-direction: column;
@@ -114,6 +169,16 @@ export const FormWrapper = styled.div`
     font-family: "Saira", sans-serif;
     cursor: pointer;
     transition: all 0.2s;
+
+    @media ${devices.tablet} {
+      margin: 1rem 0rem;
+      padding: 1.1rem 4rem;
+      font-size: 1.5rem;
+    }
+
+    @media ${devices.mobileL} {
+      padding: 0.7rem 3.5rem;
+    }
 
     &:hover {
       transform: translateY(-3px);
@@ -135,9 +200,30 @@ export const FormWrapper = styled.div`
     transition: all 0.2s;
     font-family: "Saira", sans-serif;
     transition: all 0.2s ease-in-out;
+    justify-content: center;
+
+    @media ${devices.tablet} {
+      height: 4.2rem;
+      position: relative;
+      font-size: 1.8rem;
+    }
+
+    @media ${devices.mobileL} {
+      height: 3.5rem;
+      font-size: 0.8rem;
+      padding: 0rem 0rem 0rem 2.5rem;
+    }
 
     &::placeholder {
       color: var(--text-color-primary);
+
+      @media ${devices.tablet} {
+        font-size: 1.7rem;
+      }
+
+      @media ${devices.mobileL} {
+        font-size: 1rem;
+      }
     }
 
     &:focus {
@@ -157,6 +243,14 @@ export const FormWrapper = styled.div`
     padding: 0rem 1rem;
     display: inline;
     transition: all 0.5s;
+
+    @media ${devices.tablet} {
+      font-size: 1.5rem;
+    }
+
+    @media ${devices.mobileL} {
+      font-size: 1.2rem;
+    }
   }
 
   .input_icon {
@@ -165,6 +259,18 @@ export const FormWrapper = styled.div`
     width: 1.4rem;
     position: absolute;
     margin-left: 1rem;
+
+    @media ${devices.tablet} {
+      height: 1.7rem;
+      width: 1.7rem;
+      position: absolute;
+      z-index: 100;
+    }
+
+    @media ${devices.mobileL} {
+      height: 1rem;
+      width: 1rem;
+    }
   }
 
   .input_lock {
@@ -186,4 +292,8 @@ export const Search = styled.div`
   align-items: center;
   width: 100%;
   align-self: center;
+
+  @media ${devices.tablet} {
+    margin: 1rem 0rem;
+  }
 `;
