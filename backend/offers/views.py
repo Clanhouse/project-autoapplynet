@@ -41,7 +41,6 @@ class OfferList(APIView):
         serializer = OfferSerializer(data=request.data)
         if serializer.is_valid():
             sd = serializer.validated_data
-            print(sd)
             try:
                 Offer.objects.get(
                     title=sd["title"],
@@ -78,8 +77,8 @@ class ApplicationHistory(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        profile = request.user
-        applications = Application.objects.filter(user=profile.pk)
+        user = request.user
+        applications = Application.objects.filter(user=user.pk)
         response = []
         for application in applications:
             offer = application.offer

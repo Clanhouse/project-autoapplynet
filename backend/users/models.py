@@ -37,6 +37,9 @@ class MyUser(AbstractBaseUser):
     )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    first_name = models.CharField(max_length=64, blank=True)
+    last_name = models.CharField(max_length=64, blank=True)
+    resume = models.FileField(blank=True)
 
     objects = MyUserManager()
 
