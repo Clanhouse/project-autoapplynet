@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Offer, Profile, Application
+from .models import Offer, Application
 
 
 admin.site.register(Offer)
-admin.site.register(Profile)
 admin.site.register(Application)

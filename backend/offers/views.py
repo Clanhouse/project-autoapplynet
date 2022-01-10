@@ -1,8 +1,8 @@
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Offer, Profile, Application
-from .serializers import OfferSerializer, ProfileSerializer, ApplicationSerializer
+from .models import Offer, Application
+from .serializers import OfferSerializer, ApplicationSerializer
 from .permissions import IsStaffOrReadOnly
 
 
@@ -10,7 +10,30 @@ class OfferList(APIView):
     permission_classes = [IsStaffOrReadOnly]
 
     def get(self, request):
-        offers = Offer.objects.all()
+
+        title = request.GET.get("title", "")
+        city = request.GET.get("city", "")
+        experience_levels = request.GET.get("exp", "")
+        salary_min = int(request.GET.get("smin", -1))
+        salary_max = int(request.GET.get("smax", -1))
+        remote = request.GET.get("remote", "")
+
+        offers = Offer.objects.filter(active=True)
+        if title:
+            offers = offers.filter(title__icontains=title)
+        if city:
+            offers = offers.filter(city__iexact=city)
+        if experience_levels:
+            offers = offers.filter(experience_level__in=experience_levels)
+        if salary_min != -1:
+            offers = offers.filter(salary_min__gte=salary_min)
+        if salary_max != -1:
+            offers = offers.filter(salary_max__lte=salary_max)
+        if remote == "true":
+            offers = offers.filter(remote=True)
+        elif remote == "false":
+            offers = offers.filter(remote=False)
+
         serializer = OfferSerializer(offers, many=True)
         return Response(serializer.data)
     
@@ -18,8 +41,7 @@ class OfferList(APIView):
         serializer = OfferSerializer(data=request.data)
         if serializer.is_valid():
             sd = serializer.validated_data
-            print(sd)
-            try: 
+            try:
                 Offer.objects.get(
                     title=sd["title"],
                     company_name=sd["company_name"],
@@ -34,20 +56,11 @@ class OfferList(APIView):
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
-class ProfileDetail(APIView):
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get(self, request):
-        profile = request.user.profile
-        serializer = ProfileSerializer(profile)
-        return Response(serializer.data)
-
-
 class OfferApply(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        user = request.user.profile
+        user = request.user
         offer_id = request.data['offer_id']
         try:
             offer = Offer.objects.get(pk=offer_id)
@@ -64,8 +77,8 @@ class ApplicationHistory(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        profile = request.user.profile
-        applications = Application.objects.filter(user=profile.pk)
+        user = request.user
+        applications = Application.objects.filter(user=user.pk)
         response = []
         for application in applications:
             offer = application.offer
